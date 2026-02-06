@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Rose Day My Love 🌹</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  height:100vh;
+  overflow:hidden;
+  font-family:"Segoe UI",sans-serif;
+  background:linear-gradient(180deg,#2b0000,#7a0012,#ff4d6d);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+}
+
+/* Rose petals falling */
+.petal{
+  position:fixed;
+  top:-20px;
+  font-size:18px;
+  animation:fall linear infinite;
+  opacity:.9;
+}
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(360deg);
+    opacity:0;
+  }
+}
+
+/* Main container */
+.container{
+  text-align:center;
+  z-index:5;
+  animation:fadeIn 2s ease;
+}
+
+h1{
+  font-size:4em;
+  margin-bottom:10px;
+  text-shadow:0 0 20px rgba(255,0,80,.6);
+}
+
+h2{
+  font-weight:300;
+  margin-bottom:40px;
+  opacity:.9;
+}
+
+/* Rose */
+#rose{
+  font-size:90px;
+  animation:glow 2s infinite alternate;
+  cursor:pointer;
+}
+
+@keyframes glow{
+  from{filter:drop-shadow(0 0 5px #ff4d6d)}
+  to{filter:drop-shadow(0 0 25px #ff4d6d)}
+}
+
+/* Bouquet */
+#bouquet{
+  font-size:80px;
+  margin-top:20px;
+  display:none;
+}
+
+/* Button */
+button{
+  margin-top:30px;
+  padding:15px 40px;
+  font-size:1em;
+  border:none;
+  border-radius:30px;
+  background:#ff4d6d;
+  color:white;
+  cursor:pointer;
+  box-shadow:0 0 20px rgba(255,0,80,.6);
+}
+
+/* Love letter overlay */
+#letter{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  justify-content:center;
+  align-items:center;
+  z-index:10;
+}
+
+.letter-box{
+  background:linear-gradient(135deg,#fff,#ffe6eb);
+  color:#333;
+  padding:35px;
+  border-radius:25px;
+  max-width:420px;
+  text-align:center;
+  animation:pop 0.6s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(.5); opacity:0}
+  to{transform:scale(1); opacity:1}
+}
+
+.final{
+  margin-top:20px;
+  font-size:1.2em;
+  font-weight:bold;
+  color:#ff2d55;
+}
+
+/* Animations */
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(30px)}
+  to{opacity:1; transform:translateY(0)}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>🌹 Happy Rose Day 🌹</h1>
+  <h2>To the one who colors my life with love</h2>
+
+  <div id="rose" onclick="giveRose()">🌹</div>
+  <div id="bouquet">💐</div>
+
+  <button onclick="openLetter()">💌 Read My Heart</button>
+</div>
+
+<!-- Love Letter -->
+<div id="letter">
+  <div class="letter-box">
+    <h2>My Love 🌹</h2>
+    <p>
+      This rose is not just a flower,  
+      it’s every feeling I fail to put into words.
+    </p>
+    <p>
+      You walked into my life quietly,  
+      but changed everything beautifully.  
+      Every smile of yours feels like a promise,  
+      every moment with you feels like home.
+    </p>
+    <p class="final">
+      I Love You Forever ❤️
+    </p>
+  </div>
+</div>
+
+<script>
+/* Falling rose petals */
+setInterval(()=>{
+  const p=document.createElement("div");
+  p.className="petal";
+  p.innerHTML=["🌹","🌸","💮"][Math.floor(Math.random()*3)];
+  p.style.left=Math.random()*100+"vw";
+  p.style.animationDuration=4+Math.random()*4+"s";
+  p.style.fontSize=14+Math.random()*20+"px";
+  document.body.appendChild(p);
+  setTimeout(()=>p.remove(),9000);
+},300);
+
+/* Rose to bouquet */
+function giveRose(){
+  rose.style.display="none";
+  bouquet.style.display="block";
+}
+
+/* Open letter */
+function openLetter(){
+  letter.style.display="flex";
+}
+</script>
+
+</body>
+</html>
